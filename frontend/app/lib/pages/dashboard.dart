@@ -33,7 +33,6 @@ class _DashboardPageState extends State<DashboardPage>{
       try {
         final String raw = message is String ? message : utf8.decode(message);
 
-        // Try to salvage JSON substring between the first '{' and last '}'
         final int start = raw.indexOf('{');
         final int end = raw.lastIndexOf('}');
         if (start == -1 || end == -1 || end <= start) {
@@ -43,7 +42,6 @@ class _DashboardPageState extends State<DashboardPage>{
 
         String jsonStr = raw.substring(start, end + 1);
 
-        // Heuristic cleanups for malformed tokens sometimes observed in payloads
         if (jsonStr.contains('K"') || jsonStr.contains('D"')) {
           jsonStr = jsonStr
               .replaceAll('K"', '"')
@@ -52,7 +50,6 @@ class _DashboardPageState extends State<DashboardPage>{
 
         final dynamic decoded = jsonDecode(jsonStr);
 
-        // Accept either { zones: ... } or the zone object itself
         dynamic zones = (decoded is Map<String, dynamic>) ? decoded['zones'] : null;
         dynamic zoneCandidate = zones ?? decoded;
 
@@ -65,7 +62,7 @@ class _DashboardPageState extends State<DashboardPage>{
         }
 
         if (zoneMap == null) {
-          // No zone payload, but update tank if provided at top-level
+
           T? _asNum<T extends num>(dynamic v) {
             if (v == null) return null;
             if (v is T) return v;
@@ -88,7 +85,6 @@ class _DashboardPageState extends State<DashboardPage>{
           return;
         }
 
-        // Normalize alerts to a List<String>
         final dynamic alerts = zoneMap['alerts'];
         List<dynamic> normalizedAlerts;
         if (alerts == null) {
@@ -102,7 +98,6 @@ class _DashboardPageState extends State<DashboardPage>{
         }
         zoneMap['alerts'] = normalizedAlerts;
 
-        // Coerce numeric fields to expected types if present
         T? _asNum<T extends num>(dynamic v) {
           if (v == null) return null;
           if (v is T) return v;
@@ -113,7 +108,7 @@ class _DashboardPageState extends State<DashboardPage>{
           }
           return null;
         }
-        // Accept common aliases for tank level (prefer top-level if present)
+        
         final int? topTank = (decoded is Map<String, dynamic>)
             ? _asNum<int>(decoded['tankLevel'] ?? decoded['tank'] ?? decoded['tank_level'])
             : null;
@@ -124,7 +119,7 @@ class _DashboardPageState extends State<DashboardPage>{
           zoneMap['flowRate'] ?? zoneMap['flow_rate'] ?? zoneMap['flow'],
         );
 
-        // publish telemetry for other pages
+
         TelemetryService.instance.publish(
           flowRateLpm: flowRate,
           tankLevelPercent: (tank ?? topTank),
@@ -163,7 +158,6 @@ class _DashboardPageState extends State<DashboardPage>{
 
   @override
   Widget build(BuildContext context) {
-    // waterLevel bound to WS tankLevel updates
     final fields = [
       {
         "image": "assets/pic1.jpg",
@@ -255,10 +249,10 @@ class _DashboardPageState extends State<DashboardPage>{
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        // 🌊 Moisture Card
+                     
                         Expanded(
                           child: SizedBox(
-                            height: 100, // 👈 set card height here
+                            height: 100,
                             child: Card(
                               color:Color.fromRGBO(229, 244, 251, 1.0),
                               shape: RoundedRectangleBorder(
@@ -275,12 +269,12 @@ class _DashboardPageState extends State<DashboardPage>{
                           ),
                         ),
 
-                        const SizedBox(width: 12), // spacing between cards
+                        const SizedBox(width: 12), 
 
-                        // 🌡️ Temperature Card
+                        // temperature card 
                         Expanded(
                           child: SizedBox(
-                            height: 100, // 👈 set card height here
+                            height: 100, 
                             child: Card(
                               color:Color.fromRGBO(251, 249, 229, 1.0),
                               shape: RoundedRectangleBorder(
@@ -320,14 +314,14 @@ class _DashboardPageState extends State<DashboardPage>{
               ),
             ),
           ),
-          /// 💧 Rainwater Tank with wavy water
+          /// rainwater hvstng
           SizedBox(
             height: 200,
             width: double.infinity,
             child: Stack(
               alignment: Alignment.center,
               children: [
-                // Tank outline
+                // tnk
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
@@ -336,11 +330,10 @@ class _DashboardPageState extends State<DashboardPage>{
                   ),
                 ),
 
-                // 🌊 Wavy water fill
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: FractionallySizedBox(
-                    heightFactor: waterLevel / 100, // fill % based on waterLevel
+                    heightFactor: waterLevel / 100, 
                     widthFactor: 1.0,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
@@ -365,7 +358,6 @@ class _DashboardPageState extends State<DashboardPage>{
                   ),
                 ),
 
-                // Big number + label
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -494,7 +486,7 @@ class _DashboardPageState extends State<DashboardPage>{
 
               const SizedBox(height: 10),
 
-              // Bar Chart
+              // Bar Chartz
               SizedBox(
                 height: 180,
                 child: BarChart(
@@ -519,14 +511,14 @@ class _DashboardPageState extends State<DashboardPage>{
                     ),
                     gridData: FlGridData(show: false),
 
-                    // Bars
+                 
                     barGroups: List.generate(30, (index) {
                       final double height = (index * index) / 5 + 5;
 
                       (index < 15)
                           ? index.toDouble() + 10
-                          : 30 - index.toDouble() + 5; // decreases after 15
-                           // Fake data
+                          : 30 - index.toDouble() + 5; 
+                       
                       return BarChartGroupData(
                         x: index,
                         barRods: [
