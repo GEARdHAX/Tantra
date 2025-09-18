@@ -1,0 +1,50 @@
+farmtech-app/
+├── public/
+│   ├── index.html
+│   └── vite.svg
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── dashboard/
+│   │   │   ├── LanguageSelector.jsx
+│   │   │   ├── TestVoiceButton.jsx
+│   │   │   ├── SummaryCards.jsx
+│   │   │   └── ZoneStatusList.jsx
+│   │   ├── zones/
+│   │   │   ├── ZoneList.jsx
+│   │   │   ├── ZoneDetails.jsx
+│   │   │   ├── AlertList.jsx
+│   │   │   ├── MapLinkButton.jsx
+│   │   │   └── VoiceAlertButton.jsx
+│   │   ├── recommendations/
+│   │   │   ├── RecommendationPanel.jsx
+│   │   │   ├── TaskList.jsx
+│   │   │   └── ExportButton.jsx
+│   │   └── settings/
+│   │       ├── LanguageSettings.jsx
+│   │       ├── AlertSettings.jsx
+│   │       └── HelpSection.jsx
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── ZonesAndAlerts.jsx
+│   │   ├── RecommendationsAndReports.jsx
+│   │   └── SettingsAndHelp.jsx
+│   ├── contexts/
+│   │   └── AppContext.jsx
+│   ├── data/
+│   │   └── mockData.js
+│   ├── utils/
+│   │   └── voiceUtils.js
+│   ├── hooks/
+│   │   └── useAppContext.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .gitignore
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md

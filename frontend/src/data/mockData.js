@@ -1,0 +1,212 @@
+// ZONES
+export const zones = [
+    {
+        id: 1,
+        name: "Rice Paddy Field",
+        status: "normal",
+        moisture: 65,
+        temperature: 28,
+        lastUpdated: "2023-09-15T10:30:00",
+        location: { lat: 27.7172, lng: 85.3240 },
+        alerts: []
+    },
+    {
+        id: 2,
+        name: "Vegetable Garden",
+        status: "warning",
+        moisture: 40,
+        temperature: 30,
+        lastUpdated: "2023-09-15T10:35:00",
+        location: { lat: 27.7182, lng: 85.3245 },
+        alerts: [
+            {
+                id: 1,
+                type: "moisture",
+                message: "Low moisture level detected",
+                timestamp: "2023-09-15T09:30:00",
+                read: false
+            }
+        ]
+    },
+    {
+        id: 3,
+        name: "Fruit Orchard",
+        status: "critical",
+        moisture: 25,
+        temperature: 33,
+        lastUpdated: "2023-09-15T10:40:00",
+        location: { lat: 27.7190, lng: 85.3250 },
+        alerts: [
+            {
+                id: 2,
+                type: "moisture",
+                message: "Critical moisture level, immediate irrigation needed",
+                timestamp: "2023-09-15T08:45:00",
+                read: false
+            },
+            {
+                id: 3,
+                type: "temperature",
+                message: "High temperature warning",
+                timestamp: "2023-09-15T09:15:00",
+                read: true
+            }
+        ]
+    },
+    {
+        id: 4,
+        name: "Wheat Field",
+        status: "normal",
+        moisture: 60,
+        temperature: 26,
+        lastUpdated: "2023-09-15T10:45:00",
+        location: { lat: 27.7160, lng: 85.3230 },
+        alerts: []
+    }
+];
+
+// TANK DATA
+export const tankData = {
+    currentLevel: 80, // percentage
+    capacity: 5000, // liters
+    lastRefilled: "2023-09-14T17:00:00",
+    status: "normal"
+};
+
+// PUMP DATA
+export const pumpData = [
+    { id: 1, zoneId: 1, name: "Rice Paddy Pump", status: "off", lastActivated: "2023-09-14T07:30:00" },
+    { id: 2, zoneId: 2, name: "Vegetable Garden Pump", status: "on", lastActivated: "2023-09-15T08:00:00" },
+    { id: 3, zoneId: 3, name: "Fruit Orchard Pump", status: "off", lastActivated: "2023-09-14T19:45:00" },
+    { id: 4, zoneId: 0, name: "Main Tank Pump", status: "on", lastActivated: "2023-09-15T09:00:00" }
+];
+
+// PEST ALERTS
+export const pestAlerts = [
+    {
+        id: 1,
+        zoneId: 3,
+        severity: "high",
+        zoneName: "Fruit Orchard",
+        message: "Severe aphid infestation detected",
+        timestamp: "2023-09-15T09:00:00"
+    },
+    {
+        id: 2,
+        zoneId: 4,
+        severity: "medium",
+        zoneName: "Wheat Field",
+        message: "Moderate risk of rust fungus",
+        timestamp: "2023-09-14T12:30:00"
+    }
+];
+
+// RECOMMENDATIONS
+export const recommendations = [
+    {
+        id: 1,
+        zoneId: 2,
+        message: "Increase irrigation for vegetable garden",
+        priority: "medium",
+        timestamp: "2023-09-15T10:00:00"
+    },
+    {
+        id: 2,
+        zoneId: 3,
+        message: "Immediate irrigation required for fruit orchard",
+        priority: "high",
+        timestamp: "2023-09-15T09:00:00"
+    },
+    {
+        id: 3,
+        zoneId: 1,
+        message: "Optimal conditions for rice paddy field, maintain current settings",
+        priority: "low",
+        timestamp: "2023-09-15T11:00:00"
+    }
+];
+
+// MOISTURE HISTORY
+export const moistureHistory = {
+    labels: ['Aug 10', 'Aug 15', 'Aug 20', 'Aug 25', 'Aug 30', 'Sep 5', 'Sep 10', 'Sep 15'],
+    datasets: [
+        {
+            label: 'Rice Paddy Field',
+            data: [70, 68, 65, 67, 69, 66, 64, 65],
+            borderColor: '#22c55e',
+        },
+        {
+            label: 'Vegetable Garden',
+            data: [60, 55, 50, 48, 45, 43, 42, 40],
+            borderColor: '#eab308',
+        },
+        {
+            label: 'Fruit Orchard',
+            data: [55, 50, 45, 40, 35, 32, 28, 25],
+            borderColor: '#ef4444',
+        },
+        {
+            label: 'Wheat Field',
+            data: [62, 63, 61, 62, 60, 59, 61, 60],
+            borderColor: '#3b82f6',
+        }
+    ],
+};
+
+// TEMPERATURE HISTORY
+export const temperatureHistory = {
+    labels: ['Aug 10', 'Aug 15', 'Aug 20', 'Aug 25', 'Aug 30', 'Sep 5', 'Sep 10', 'Sep 15'],
+    datasets: [
+        {
+            label: 'Rice Paddy Field',
+            data: [26, 27, 28, 27, 26, 27, 28, 28],
+            borderColor: '#22c55e',
+        },
+        {
+            label: 'Vegetable Garden',
+            data: [27, 28, 29, 30, 29, 30, 31, 30],
+            borderColor: '#eab308',
+        },
+        {
+            label: 'Fruit Orchard',
+            data: [28, 29, 30, 31, 32, 31, 32, 33],
+            borderColor: '#ef4444',
+        },
+        {
+            label: 'Wheat Field',
+            data: [25, 26, 27, 26, 25, 26, 25, 26],
+            borderColor: '#3b82f6',
+        }
+    ],
+};
+
+// TASKS
+export const tasks = [
+    { id: 1, text: "Irrigate vegetable garden", completed: false },
+    { id: 2, text: "Apply fertilizer to fruit orchard", completed: false },
+    { id: 3, text: "Check rice paddy field water level", completed: true },
+    { id: 4, text: "Monitor wheat field for pests", completed: false }
+];
+
+// WEATHER INFO
+export const weatherInfo = {
+    current: {
+        temperature: 28,
+        condition: "Partly Cloudy",
+        humidity: 65,
+        windSpeed: 10,
+        precipitation: 0
+    },
+    forecast: [
+        { day: "Today", high: 30, low: 22, condition: "Partly Cloudy" },
+        { day: "Tomorrow", high: 32, low: 23, condition: "Sunny" },
+        { day: "Sunday", high: 29, low: 21, condition: "Rain" }
+    ]
+};
+
+// LANGUAGES
+export const languages = [
+    { code: "en", name: "English" },
+    { code: "ne", name: "नेपाली" },
+    { code: "hi", name: "हिन्दी" }
+];

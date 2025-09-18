@@ -1,0 +1,38 @@
+import React from 'react';
+import { VolumeIcon } from 'lucide-react';
+import { speakText } from '../../utils/voiceUtils';
+import { useAppContext } from '../../hooks/useAppContext';
+
+const TestVoiceButton = () => {
+  const { appState } = useAppContext();
+  
+  const testMessages = {
+    'en': 'This is a test alert from your Smart Agriculture Monitoring System.',
+    'ne': 'यो तपाईंको स्मार्ट कृषि अनुगमन प्रणालीबाट एक परीक्षण सतर्कता हो।',
+    'hi': 'यह आपके स्मार्ट कृषि निगरानी प्रणाली से एक परीक्षण अलर्ट है।'
+  };
+
+  const languageMap = {
+    'en': 'en-US',
+    'ne': 'ne-NP', 
+    'hi': 'hi-IN'
+  };
+
+  const handleTestVoice = () => {
+    const message = testMessages[appState.preferredLanguage] || testMessages['en'];
+    const speechLang = languageMap[appState.preferredLanguage] || 'en-US';
+    speakText(message, speechLang);
+  };
+
+  return (
+    <button
+      className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none"
+      onClick={handleTestVoice}
+    >
+      <VolumeIcon size={18} className="mr-2" />
+      Test Voice Alert
+    </button>
+  );
+};
+
+export default TestVoiceButton;
