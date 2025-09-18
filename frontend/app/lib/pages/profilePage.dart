@@ -14,7 +14,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  // Fake demo data; in a real app this would come from a backend/local DB
   String selectedLanguageCode = 'en';
 
   @override
@@ -26,7 +25,6 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Header card with avatar and basic info
           _Card(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
             child: Column(
@@ -61,8 +59,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
 
           const SizedBox(height: 16),
-
-          // Farm details
           _SectionHeader(title: loc.farmDetailsTitle),
           _Card(
             child: Column(
@@ -77,8 +73,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
 
           const SizedBox(height: 16),
-
-          // Device & Sensors
           _SectionHeader(title: loc.deviceSensorTitle),
           _Card(
             child: Column(
@@ -92,7 +86,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
           const SizedBox(height: 16),
 
-          // Preferences
           _SectionHeader(title: loc.preferencesSettingsTitle),
           _Card(
             child: Column(
@@ -102,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 _kv(loc.dashboardCustomization, loc.dashboardCustomizationOptions),
                 _kv(loc.privacySecurity, loc.privacySecurityHint),
                 const Divider(height: 24),
-                // Inline language selector
+ 
                 Row(
                   children: [
                     Icon(Icons.language, color: Colors.grey[700]),
@@ -129,7 +122,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
           const SizedBox(height: 16),
 
-          // Achievements
           _SectionHeader(title: loc.achievementsTitle),
           _Card(
             child: Column(
@@ -144,13 +136,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
           const SizedBox(height: 16),
 
-          // Soil Requirements & Fertilizer Recommendations
           _SectionHeader(title: "Soil Analysis & Fertilizer Recommendations"),
           _Card(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Soil Analysis Section
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -186,8 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 
                 const SizedBox(height: 16),
-                
-                // Fertilizer Recommendations
+          
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -298,8 +287,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
 
           const SizedBox(height: 16),
-
-          // Support
           _SectionHeader(title: loc.supportTitle),
           _Card(
             child: Column(
