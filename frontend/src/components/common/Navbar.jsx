@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold">FarmTech</span>
+              <span className="text-xl font-bold">Tantra</span>
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
