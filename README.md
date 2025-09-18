@@ -1,4 +1,4 @@
-📖 Overview
+# 📖 Overview
 
 This project demonstrates a smart irrigation system that automates watering based on real-time soil conditions. It uses IoT hardware with ESP8266 for connectivity, a relay-driven solenoid valve for water control, and renewable energy simulation via a micro turbine.
 
@@ -102,7 +102,7 @@ Live charts for growth trends
 
 Mulity Lingual Support
 
-# best niutrients for the sepecific field
+best niutrients for the sepecific field
 
 💧 Tank Visualization
 
