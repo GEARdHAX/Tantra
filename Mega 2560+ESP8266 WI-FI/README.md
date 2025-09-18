@@ -60,7 +60,7 @@ OFF: All others
 
 The Arduino Mega will send sensor data to the ESP8266, which will forward it as JSON to your WebSocket server.
 
-## **. Deployment using DIP Switches**
+## **Code Deployment**
 1. **Install Arduino IDE:** Ensure you have the latest version from the [official website](https://www.arduino.cc/en/software).  
 2. **Install Board Managers:**  
    * In the IDE, go to Tools \> Board \> Boards Manager... and install Arduino AVR Boards.  
@@ -84,3 +84,14 @@ The Arduino Mega will send sensor data to the ESP8266, which will forward it as 
 5. **Upload Firmware:**  
    * Connect the Arduino Mega, select Arduino Mega or Mega 2560 as the board, choose the correct COM port, and upload the main Mega sketch.  
    * Connect the ESP8266, select NodeMCU 1.0 (ESP-12E Module) (or your specific board), choose the correct COM port, and upload the main ESP8266 sketch.
+
+## **LICENSE**
+1. Arduino Hardware License (for the Mega 2560 board)
+License: Creative Commons Attribution Share-Alike (CC BY-SA)
+
+What it means: The design for the physical Arduino board is open source. You are free to view the schematics, create your own versions of the board, and even sell them. In return, you must give credit to Arduino and share any modified designs under this same license.
+
+2. Arduino Software License (for the IDE & Core Libraries)
+License: GNU Lesser General Public License (LGPL)
+
+What it means: This license is very flexible. You can write your own code (like your .ino sketches) that uses the standard Arduino functions (digitalWrite, delay, Serial.println, etc.) for any purpose, including in commercial or closed-source projects
