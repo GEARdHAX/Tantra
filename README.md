@@ -4,11 +4,11 @@
 
 ├── backend/                   # Node.js backend server
 
-   ── app.js                 # Main entry point of the backend server
+  -- app.js                 # Main entry point of the backend server
 
-   ── package.json           # Backend dependencies and scripts
+  -- package.json           # Backend dependencies and scripts
 
-   ── package-lock.json      # Locked versions of backend dependencies
+  -- package-lock.json      # Locked versions of backend dependencies
 
 │   └── README.md              # Backend-specific documentation
 
