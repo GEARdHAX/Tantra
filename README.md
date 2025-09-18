@@ -1,9 +1,21 @@
 📂 Repository Structure
-├── Mega 2560+ESP8266 WI-FI/   # Arduino + ESP8266 code for IoT hardware
-├── frontend/                  
-│   └── app/                   # Full Flutter app (mobile + web frontend)
-├── LICENSE                    # Open-source license for the project
-├── README.md                  # Project documentation
+├── Mega 2560+ESP8266 WI-FI/   # Arduino code for IoT hardware (Mega 2560 + ESP8266)
+├── backend/                   # Node.js backend server
+│   ├── app.js                 # Main entry point of the backend server
+│   ├── package.json           # Backend dependencies and scripts
+│   ├── package-lock.json      # Locked versions of backend dependencies
+│   └── README.md              # Backend-specific documentation
+├── frontend/                  # Frontend (Flutter/React/Other client)
+│   ├── app/                   # Flutter application code
+│   └── ...                    # Supporting files for frontend
+├── .gitignore                 # Ignored files for Git
+├── LICENSE                    # Project license
+├── README.md                  # Main documentation (this file)
+├── package.json               # Root-level Node.js config (if used globally)
+├── package-lock.json          # Root-level lock file
+
+
+
 
 📁 Folders
 
