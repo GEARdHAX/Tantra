@@ -10,16 +10,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 Future<void> main() async {
-  // Make sure Flutter is initialized before loading .env
+  
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load your .env file
   await dotenv.load(fileName: ".env");
 
   runApp(const MyApp());
 }
-
-/// MyApp now manages the locale and updates when user chooses new language
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -28,7 +25,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale = const Locale('en'); // default language
+  Locale _locale = const Locale('en'); 
 
   void _setLocale(Locale locale) {
     setState(() {
@@ -41,8 +38,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "Smart Agriculture Project",
       debugShowCheckedModeBanner: false,
-      locale: _locale, // 👈 dynamic language switching
-      home: HomePage(onLocaleChange: _setLocale), // pass callback to HomePage
+      locale: _locale,
+      home: HomePage(onLocaleChange: _setLocale), 
       theme: ThemeData(
         useMaterial3: false,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -59,15 +56,15 @@ class _MyAppState extends State<MyApp> {
       ),
       localizationsDelegates: const [
         AppLocalizations
-            .delegate, // generated file from arb translations in /l10n
+            .delegate, 
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
-        Locale('en'), // English
-        Locale('ne'), // Nepali
-        Locale('hi'), // Hindi
+        Locale('en'), // englishh
+        Locale('ne'), // nepalii
+        Locale('hi'), // hindi
       ],
     );
   }
@@ -103,7 +100,6 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  // 🌤 Update UI based on weather condition
   void _updateThemeBasedOnWeather(String condition) {
     setState(() {
       if (condition.contains("storm")) {
@@ -133,7 +129,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: _appBarColor,
         title: Text(
-          loc.title, // 👈 use localized string instead of hardcoded
+          loc.title,
           style: TextStyle(color: Colors.grey[800]!),
         ),
         centerTitle: false,
