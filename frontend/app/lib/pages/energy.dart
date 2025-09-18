@@ -9,14 +9,13 @@ class WindFarmDemo extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          /// 🔹 Background (Sky + Landscape + Turbines)
+
           Positioned.fill(
             child: CustomPaint(
               painter: LandscapePainter(),
             ),
           ),
 
-          /// 🔹 Wind Turbines (background layer)
           Positioned.fill(
             child: Stack(
               children: const [
@@ -27,7 +26,6 @@ class WindFarmDemo extends StatelessWidget {
             ),
           ),
 
-          /// 🔹 Foreground (Cards/UI on top of turbines)
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -53,7 +51,6 @@ class WindFarmDemo extends StatelessWidget {
   }
 }
 
-/// 🌬 Single turbine widget
 class WindTurbine extends StatefulWidget {
   final double x;
   final double y;
@@ -122,19 +119,17 @@ class _WindTurbinePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = Colors.white
-      ..strokeWidth = 6   // ⬅️ thickness of tower & blades
-      ..strokeCap = StrokeCap.round; // makes ends rounded
+      ..strokeWidth = 6   
+      ..strokeCap = StrokeCap.round; 
 
 
-    // Tower
     canvas.drawRect(Rect.fromLTWH(x - 5, y - height, 10, height), paint);
 
-    // Hub
     final hub = Offset(x, y - height);
     paint.color = Colors.grey.shade300;
     canvas.drawCircle(hub, 6, paint);
 
-    // Blades
+
     paint.color = Colors.white;
     const bladeLength = 60.0;
 
