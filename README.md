@@ -4,7 +4,7 @@
 
 ├── backend/                   # Node.js backend server
 
-│   ├── app.js                 # Main entry point of the backend server
+   ├── app.js                 # Main entry point of the backend server
 
 │   ├── package.json           # Backend dependencies and scripts
 
