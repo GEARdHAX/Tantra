@@ -60,7 +60,7 @@ Supported sensors:
         
         💦 Irrigation scheduling
         
-        🐛 Pest & disease detection
+        🐛 Pest detection
 
 4. Software Layer (Frontend + Backend)
 
