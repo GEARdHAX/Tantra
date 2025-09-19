@@ -15,11 +15,7 @@ It acts as a **data pipeline**:
 backend/
 │
 ├── src/
-│   ├── index.js         # WebSocket server (entry point)
-│   ├── websocket.js     # Handles WebSocket connections & broadcasting
-│   ├── routes/          # (Future) REST API routes if needed
-│   └── utils/           # Helper functions for parsing, validation, etc.
-│
+│   ├── app.js         # WebSocket server (main file)
 ├── package.json         # Dependencies and scripts
 └── README.md            # This file
 ````
@@ -101,9 +97,19 @@ The ESP8266 or Arduino sends data in JSON format like:
 
 ```json
 {
-  "sensor": "soilMoisture",
-  "value": 42,
-  "unit": "%"
+  "zones": [
+    {
+      "id": 1,
+      "name": "Zone 1",
+      "moisture": 13,
+      "temperature": 27.86,
+      "humidity": 69.03,
+      "flowRate": 0,
+      "pestRisk": "medium",
+      "alerts": []
+    }
+  ],
+  "tankLevel": 0
 }
 ```
 
