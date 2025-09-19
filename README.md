@@ -44,55 +44,55 @@ Supported sensors:
 
 2. Communication Layer
 
-    Data transmission via LoRa / GSM / Wi-Fi (ESP8266).
-    
-    Uses Arduino Mega 2560 for preprocessing.
-    
-    Sends JSON-encoded sensor data to the backend.
+        Data transmission via LoRa / GSM / Wi-Fi (ESP8266).
+        
+        Uses Arduino Mega 2560 for preprocessing.
+        
+        Sends JSON-encoded sensor data to the backend.
 
 3. Cloud/Server Layer
-    
-    Centralized data storage & analysis.
-    
-    Runs AI/ML models for:
-    
-    🌾 Crop prediction
-    
-    💦 Irrigation scheduling
-    
-    🐛 Pest & disease detection
+        
+        Centralized data storage & analysis.
+        
+        Runs AI/ML models for:
+        
+        🌾 Crop prediction
+        
+        💦 Irrigation scheduling
+        
+        🐛 Pest & disease detection
 
 4. Software Layer (Frontend + Backend)
 
-    Backend (Node.js WebSocket Server):
-    
-    Manages ESP8266 connections.
-    
-    Broadcasts sensor data to multiple React clients.
-    
-    Ensures real-time data flow between IoT → Server → Dashboard.
-    
-    Frontend (React Dashboard):
-    
-    📊 Displays live farm data (graphs, tables, heat maps).
-    
-    🔔 Sends pest/disease alerts & irrigation suggestions.
-    
-    🎙️ Provides voice & text alerts in multiple languages.
-    
-    🌍 Farmer-friendly web & mobile interface.
+        Backend (Node.js WebSocket Server):
+        
+        Manages ESP8266 connections.
+        
+        Broadcasts sensor data to multiple React clients.
+        
+        Ensures real-time data flow between IoT → Server → Dashboard.
+        
+        Frontend (React Dashboard):
+        
+        📊 Displays live farm data (graphs, tables, heat maps).
+        
+        🔔 Sends pest/disease alerts & irrigation suggestions.
+        
+        🎙️ Provides voice & text alerts in multiple languages.
+        
+        🌍 Farmer-friendly web & mobile interface.
 
 5. Actuation Layer
-    
-    Controls pumps, sprayers, and irrigation valves automatically.
-    
-    Provides manual override for farmers.
+        
+        Controls pumps, sprayers, and irrigation valves automatically.
+        
+        Provides manual override for farmers.
 
 6. Power Supply
     
-    Hybrid energy: Solar, Micro-hydro, and Battery backup.
-    
-    Ensures uninterrupted farm monitoring.
+        Hybrid energy: Solar, Micro-hydro, and Battery backup.
+        
+        Ensures uninterrupted farm monitoring.
 
 7. User Interaction
 
