@@ -7,8 +7,8 @@ import 'pages/profilePage.dart';
 import '../pages/weather.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-
+//handwritten code - Gungun B
+//future is used for async the operations from rest of code as env file is also there
 Future<void> main() async {
   
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,6 +61,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      //making sure to load all the languages from l10n
       supportedLocales: const [
         Locale('en'), // englishh
         Locale('ne'), // nepalii
