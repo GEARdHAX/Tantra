@@ -2,6 +2,8 @@ import React from 'react';
 import { DropletIcon, ThermometerIcon, BellIcon } from 'lucide-react';
 import { zones } from '../../data/mockData';
 
+// <---------- HANDWRITTEN BY ADARSH ARYA-------------->
+
 const SummaryCards = () => {
   // Calculate average moisture and temperature
   const avgMoisture = zones.reduce((sum, zone) => sum + zone.moisture, 0) / zones.length;

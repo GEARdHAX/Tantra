@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { MenuIcon, XIcon } from 'lucide-react';
 import LanguageSelector from '../dashboard/LanguageSelector';
 
+// <---------- HANDWRITTEN BY ADARSH ARYA-------------->
+
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,6 +45,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      {/* FROM HERE, ITS FOR MEDIUM SIZED DEVICES I.E. REPONSIVE DESIGN */}
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

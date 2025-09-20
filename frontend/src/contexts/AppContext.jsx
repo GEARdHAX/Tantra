@@ -2,6 +2,8 @@ import React, { createContext, useState } from 'react';
 
 export const AppContext = createContext();
 
+// <---------- HANDWRITTEN BY ADARSH ARYA ------------->
+
 export const AppProvider = ({ children }) => {
   const [appState, setAppState] = useState({
     preferredLanguage: 'en',

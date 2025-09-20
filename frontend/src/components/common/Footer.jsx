@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// <----------- USELESS/ AI-GENERATED-------------->
+
+
 const Footer = () => {
   return (
     <footer className="bg-green-900 text-white">

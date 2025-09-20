@@ -4,6 +4,8 @@ import ZoneList from '../components/zones/ZoneList';
 import ZoneDetails from '../components/zones/ZoneDetails';
 import AlertList from '../components/zones/AlertList';
 
+// Handwritten - Adarsh Arya
+
 const ZonesAndAlerts = () => {
   const [selectedZoneId, setSelectedZoneId] = useState(null);
   const location = useLocation();
@@ -31,9 +33,11 @@ const ZonesAndAlerts = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div>
+          {/* // On Zone select from the list. It will run a func called as handleSelectZone then this will send Id to component as //props. Also selectedZoneId will be updated. And again state will transfer to ZoneDetails & AlertList */}
           <ZoneList onSelectZone={handleSelectZone} selectedZoneId={selectedZoneId} />
         </div>
         <div className="lg:col-span-2 space-y-8">
+          {/* // Here new components get props and will show respective data & values. */}
           <ZoneDetails zoneId={selectedZoneId} />
           <AlertList zoneId={selectedZoneId} />
         </div>

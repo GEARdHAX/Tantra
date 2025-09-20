@@ -1,12 +1,15 @@
 import React from 'react';
 import { zones } from '../../data/mockData';
 
+// Handwritten - Adarsh Arya
+
 const ZoneList = ({ onSelectZone, selectedZoneId }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-4 bg-green-900 text-white">
         <h2 className="text-lg font-semibold">Farm Zones</h2>
       </div>
+      {/* // Here we've used mockData because as of now we don't have appropriate sensor such as pH sensor or soil quality sensor that senses reading and throw alerts if it crosses threshold values. */}
       <ul className="divide-y divide-gray-200">
         {zones.map((zone) => (
           <li 

@@ -4,6 +4,10 @@ import { zones } from '../../data/mockData';
 import { useAppContext } from '../../hooks/useAppContext';
 import { speakText } from '../../utils/voiceUtils';
 
+
+// <-----------HANDWRITTEN BY ADARSH ARYA------------>
+
+
 const ZoneDetails = ({ zoneId }) => {
   const zone = zones.find(z => z.id === zoneId);
   const { appState } = useAppContext();
@@ -20,7 +24,7 @@ const ZoneDetails = ({ zoneId }) => {
     const date = new Date(dateString);
     return date.toLocaleString();
   };
-
+// <---------------- GETTING STATUS OF ALERTS ---------------->
   const getStatusBadge = (status) => {
     switch (status) {
       case 'normal':
@@ -45,7 +49,7 @@ const ZoneDetails = ({ zoneId }) => {
       speakText(zone.alerts[0].message, speechLanguage);
     }
   };
-
+//  <------------ SIMPLE GOOGLE MAPS API USING QUERIES---------------->
   const openGoogleMaps = () => {
     const url = `https://www.google.com/maps?q=${zone.location.lat},${zone.location.lng}`;
     window.open(url, '_blank');

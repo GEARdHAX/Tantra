@@ -2,30 +2,43 @@
 #include <ESP8266WiFi.h>
 #include <WebSocketsClient.h>
 
-const char* ssid = "No_Reed";
-const char* password = "NR@850490";
-const char* websocket_host = "10.209.239.219";
+// <---------- HANDWRITTEN BY ADARSH ARYA-------------->
+// WE'RE SETTING UP WIFI COMMUNICATION AND USING WEBSOCKET FOR RTC
+const char *ssid = "No_Reed";
+const char *password = "NR@850490";
+const char *websocket_host = "10.209.239.219";
 const int websocket_port = 8080;
-const char* websocket_path = "/";
+const char *websocket_path = "/";
 
 WebSocketsClient webSocket;
 String serialBuffer = "";
 
-void webSocketEvent(WStype_t type, uint8_t* payload, size_t length) {
-  switch (type) {
-    case WStype_CONNECTED: Serial.printf("[WSc] Connected to url: %s\n", payload); break;
-    case WStype_DISCONNECTED: Serial.println("[WSc] Disconnected!"); break;
-    case WStype_TEXT: Serial.printf("[WSc] Received message: %s\n", payload); break;
+void webSocketEvent(WStype_t type, uint8_t *payload, size_t length)
+{
+  switch (type)
+  {
+  case WStype_CONNECTED:
+    Serial.printf("[WSc] Connected to url: %s\n", payload);
+    break;
+  case WStype_DISCONNECTED:
+    Serial.println("[WSc] Disconnected!");
+    break;
+  case WStype_TEXT:
+    Serial.printf("[WSc] Received message: %s\n", payload);
+    break;
   }
 }
 
-
-String getValueFromString(String data, char separator, int index) {
+// CONVERTING DATA TO STRING
+String getValueFromString(String data, char separator, int index)
+{
   int found = 0;
-  int strIndex[] = { 0, -1 };
+  int strIndex[] = {0, -1};
   int maxIndex = data.length() - 1;
-  for (int i = 0; i <= maxIndex && found <= index; i++) {
-    if (data.charAt(i) == separator || i == maxIndex) {
+  for (int i = 0; i <= maxIndex && found <= index; i++)
+  {
+    if (data.charAt(i) == separator || i == maxIndex)
+    {
       found++;
       strIndex[0] = strIndex[1] + 1;
       strIndex[1] = (i == maxIndex) ? i + 1 : i;
@@ -34,12 +47,14 @@ String getValueFromString(String data, char separator, int index) {
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   delay(1000);
   WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi");
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
   }
@@ -51,22 +66,28 @@ void setup() {
   webSocket.setReconnectInterval(5000);
 }
 
-void loop() {
+// <---------- HANDWRITTEN BY ADARSH ARYA-------------->
+
+
+// FROM HERE, LOOP PART IS AI-GENERATED
+void loop()
+{
   webSocket.loop();
-  if (Serial.available()) {
+  if (Serial.available())
+  {
     char c = Serial.read();
-    if (c == '\n') {
-      if (serialBuffer.startsWith("DATA:")) {
+    if (c == '\n')
+    {
+      if (serialBuffer.startsWith("DATA:"))
+      {
         String sensorValues = serialBuffer.substring(5);
-
-
+        
         String moistureStr = getValueFromString(sensorValues, ',', 0);
         String tempStr = getValueFromString(sensorValues, ',', 1);
         String humidityStr = getValueFromString(sensorValues, ',', 2);
         String flowRateStr = getValueFromString(sensorValues, ',', 3);
         String tankLevelStr = getValueFromString(sensorValues, ',', 4);
-
-
+        
         String json = "{";
         json += "\"zones\":[{\"id\":1,\"name\":\"Zone 1\",\"moisture\":";
         json += moistureStr;
@@ -80,13 +101,16 @@ void loop() {
         json += "\"tankLevel\":";
         json += tankLevelStr;
         json += "}";
-
+        
         Serial.println("📤 Sending JSON: " + json);
         webSocket.sendTXT(json);
       }
       serialBuffer = "";
-    } else if (c != '\r') {
+    }
+    else if (c != '\r')
+    {
       serialBuffer += c;
     }
   }
 }
+// HERE, LOOP PART IS AI-GENERATED

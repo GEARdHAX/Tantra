@@ -7,6 +7,9 @@ import { useAppContext } from '../hooks/useAppContext';
 import TestVoiceButton from '../components/dashboard/TestVoiceButton';
 import LanguageSelector from '../components/dashboard/LanguageSelector';
 
+
+// ⚠️ THIS IS JUST A COPY OF MAIN DASHBOARD IN CASE IF MAIN DASHBOARD DOESN'T FETCH WEBSOCKET DATA⚠️
+
 // --- MOCK DATA for additional UI elements ---
 const mockZonesData = [
   { id: 'zone2', name: 'Zone 2 (Mock)', moisture: 0, temperature: 0, pestRisk: 'low', alerts: [] },

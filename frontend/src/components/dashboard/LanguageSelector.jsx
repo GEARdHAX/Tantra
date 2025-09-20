@@ -3,6 +3,8 @@ import { ChevronDownIcon } from 'lucide-react';
 import { languages } from '../../data/mockData';
 import { useAppContext } from '../../hooks/useAppContext';
 
+// <---------- HANDWRITTEN BY ADARSH ARYA-------------->
+
 const LanguageSelector = () => {
   const { appState, updateAppState } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);

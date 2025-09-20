@@ -7,6 +7,8 @@ import { useAppContext } from '../hooks/useAppContext';
 import TestVoiceButton from '../components/dashboard/TestVoiceButton';
 import LanguageSelector from '../components/dashboard/LanguageSelector';
 
+// 🚨🚨🚨 <------------------- THIS BLOCK IS AI-GENERATED i.e. WEBSOCKETS etc etc... ------------------------>
+
 // --- MOCK DATA for additional UI elements ---
 const mockZonesData = [
   { id: 'zone2', name: 'Zone 2 (Mock)', moisture: 0, temperature: 0, pestRisk: 'low', alerts: [{timestamp: new Date().toISOString(), message: "Low battery detected in sensor."}] },
@@ -16,7 +18,7 @@ const mockZonesData = [
 const Dashboard = () => {
   const { appState } = useAppContext();
   const ws = useRef(null);
-
+  
   // --- REAL-TIME STATE MANAGEMENT ---
   const [zones, setZones] = useState([]); // This will hold Zone 1 from the WebSocket
   const [tankLevel, setTankLevel] = useState(0);
@@ -24,23 +26,23 @@ const Dashboard = () => {
   const [lastUpdate, setLastUpdate] = useState(null);
   const [relayStates, setRelayStates] = useState({ mainTank: true }); // State for all relays
   const [generatedPower, setGeneratedPower] = useState(0);
-
+  
   // --- WEBSOCKET CONNECTION & DATA HANDLING ---
   useEffect(() => {
     const WEBSOCKET_URL = 'ws://10.209.239.219:8080';
     ws.current = new WebSocket(WEBSOCKET_URL);
-
+    
     ws.current.onopen = () => {
       console.log("✅ WebSocket connection established.");
       setNetworkStatus('Online');
       ws.current.send(JSON.stringify({ type: "identify", client: "ui" }));
     };
-
+    
     ws.current.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
         console.log("📩 Data received:", data);
-
+        
         if (data.zones) {
           setZones(data.zones); // Updates Zone 1 with live data
           
@@ -60,12 +62,12 @@ const Dashboard = () => {
         console.error("❌ Failed to parse message:", err);
       }
     };
-
+    
     ws.current.onclose = () => { setNetworkStatus('Offline'); console.log("❌ WebSocket disconnected."); };
     ws.current.onerror = (error) => { setNetworkStatus('Error'); console.error('❌ WebSocket error:', error); };
     return () => { if (ws.current) ws.current.close(); };
   }, []);
-
+  
   // --- COMMAND FUNCTIONS ---
   const sendCommand = (commandPayload) => {
     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
@@ -84,13 +86,13 @@ const Dashboard = () => {
       state: newRelayState ? 'ON' : 'OFF'
     });
   };
-
+  
   // --- DERIVED DATA & HELPERS ---
   const displayZones = [...zones, ...mockZonesData]; // Combine real and mock zones for rendering
   const avgMoisture = zones.length > 0 ? zones.reduce((sum, zone) => sum + (zone.moisture || 0), 0) / zones.length : 0;
   const avgTemp = zones.length > 0 ? zones.reduce((sum, zone) => sum + (zone.temperature || 0), 0) / zones.length : 0;
   const criticalPestZones = displayZones.filter(zone => zone.pestRisk === 'high').length;
-
+  
   const getStatusColor = (zone) => {
     if (!zone || (zone.id.toString().includes('Mock') && zone.moisture === 0 && zone.temperature === 0)) return 'bg-gray-400';
     if ((zone.moisture || 0) < 30 || (zone.temperature || 0) > 35 || zone.pestRisk === 'high') return 'bg-red-500';
@@ -108,7 +110,10 @@ const Dashboard = () => {
   const getMoistureStatus = (moisture) => (moisture > 60 ? 'Optimal' : moisture > 40 ? 'Low' : 'Critical');
   const getTempStatus = (temp) => (temp < 30 ? 'Normal' : temp < 35 ? 'High' : 'Critical');
   const getTankStatus = (level) => (level > 60 ? 'Full' : level > 30 ? 'Medium' : 'Low');
-
+  
+  // 🚨🚨🚨 <------------------- THIS BLOCK IS AI-GENERATED i.e. WEBSOCKETS etc etc... ------------------------>
+  
+  // 🚨🚨🚨 <-------------- JSX HERE IS WRITTEN BY ADARSH ARYA ----------------->
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header section */}
@@ -236,3 +241,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+// <-------------- JSX HERE IS WRITTEN BY ADARSH ARYA ----------------->

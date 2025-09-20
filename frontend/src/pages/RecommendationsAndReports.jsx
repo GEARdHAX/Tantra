@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { DownloadIcon, LightbulbIcon, PlusIcon, TrashIcon, CheckIcon } from 'lucide-react';
 import { zones, recommendations } from '../data/mockData';
 
+// Attributon - Recommendation File is AI - Generated - Gemini Pro 2.5
+
 // TODO: Move this to a separate file later
 const TaskList = () => {
   const [taskList, setTaskList] = useState([
@@ -10,7 +12,7 @@ const TaskList = () => {
     { id: 3, text: "Check rice paddy field water level", completed: true },
   ]);
   const [inputValue, setInputValue] = useState('');
-
+  
   // Toggle task completion status
   const toggleTaskStatus = (taskId) => {
     // console.log('Toggling task:', taskId);
@@ -20,7 +22,7 @@ const TaskList = () => {
       )
     );
   };
-
+  
   const addNewTask = (e) => {
     e.preventDefault();
     
@@ -36,12 +38,12 @@ const TaskList = () => {
     setTaskList(prev => [...prev, task]);
     setInputValue(''); // Clear input
   };
-
+  
   const removeTask = (taskId) => {
     // Filter out the task to delete
     setTaskList(currentTasks => currentTasks.filter(task => task.id !== taskId));
   };
-
+  
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-4 bg-green-900 text-white">
@@ -57,11 +59,11 @@ const TaskList = () => {
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Add a new task..."
             className="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
+            />
           <button
             type="submit"
             className="bg-green-600 text-white px-4 py-2 rounded-r-md hover:bg-green-700 focus:outline-none"
-          >
+            >
             <PlusIcon size={18} />
           </button>
         </form>
@@ -79,7 +81,7 @@ const TaskList = () => {
                     className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 transition-colors ${
                       task.completed ? 'bg-green-500 border-green-500' : 'border-gray-300 hover:border-green-400'
                     }`}
-                  >
+                    >
                     {task.completed && <CheckIcon size={12} className="text-white" />}
                   </button>
                   <span className={`${task.completed ? 'line-through text-gray-400' : 'text-gray-700'}`}>
@@ -108,13 +110,13 @@ const RecommendationPanel = () => {
     const priorities = { high: 1, medium: 2, low: 3 };
     return priorities[a.priority] - priorities[b.priority];
   });
-
+  
   // Find zone name by ID - could probably memoize this
   const findZoneName = (zoneId) => {
     const foundZone = zones.find(zone => zone.id === zoneId);
     return foundZone ? foundZone.name : 'Unknown Zone';
   };
-
+  
   const getPriorityStyles = (priority) => {
     const styles = {
       high: 'bg-red-100 text-red-800',
@@ -123,7 +125,7 @@ const RecommendationPanel = () => {
     };
     return styles[priority] || 'bg-gray-100 text-gray-800';
   };
-
+  
   // Format timestamp for display
   const formatDateTime = (dateString) => {
     try {
@@ -134,7 +136,7 @@ const RecommendationPanel = () => {
       return 'Invalid date';
     }
   };
-
+  
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-4 bg-green-900 text-white">
@@ -207,7 +209,7 @@ const RecommendationsAndReports = () => {
     // Clean up the URL object
     URL.revokeObjectURL(downloadUrl);
   };
-
+  
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       
@@ -223,7 +225,7 @@ const RecommendationsAndReports = () => {
           <button
             className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none transition-colors"
             onClick={handleDataExport}
-          >
+            >
             <DownloadIcon size={18} className="mr-2" />
             Export Data (CSV)
           </button>
@@ -244,3 +246,5 @@ const RecommendationsAndReports = () => {
 };
 
 export default RecommendationsAndReports;
+
+// Attributon - Recommendation File is AI - Generated - Gemini Pro 2.5

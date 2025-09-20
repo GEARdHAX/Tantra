@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppContext } from '../hooks/useAppContext';
 import { languages } from '../data/mockData';
 
-// Language Settings Component (inline)
+// Attributon - Settings File is AI - Generated - Gemini Pro 2.5
 const LanguageSettings = () => {
   const { appState, updateAppState } = useAppContext();
 
