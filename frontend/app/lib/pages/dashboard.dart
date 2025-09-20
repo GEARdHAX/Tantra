@@ -9,6 +9,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../services/telemetry.dart';
+
+// handwritten code - GG ( this file respresents dahsboard page of the project which shows all the details through response of websocket server, decoding the json. 
+//Its ui deals with all the fields come under the farmer and the growth rate after adaptaion of tantra system
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -26,7 +29,7 @@ class _DashboardPageState extends State<DashboardPage>{
   void initState() {
     super.initState();
     channel = WebSocketChannel.connect(
-      Uri.parse("ws://10.209.239.219:8080"),
+      Uri.parse("ws://10.209.239.219:8080"),//loading data fro websocket backend server 
     );
 
     _wsSubscription = channel.stream.listen((message) {
@@ -60,7 +63,7 @@ class _DashboardPageState extends State<DashboardPage>{
         } else if (zoneCandidate is Map<String, dynamic>) {
           zoneMap = Map<String, dynamic>.from(zoneCandidate);
         }
-
+        // code to decode the  response form websocket server, ai generated code to decode the json (chat gpt)
         if (zoneMap == null) {
 
           T? _asNum<T extends num>(dynamic v) {
@@ -118,7 +121,7 @@ class _DashboardPageState extends State<DashboardPage>{
         final double? flowRate = _asNum<double>(
           zoneMap['flowRate'] ?? zoneMap['flow_rate'] ?? zoneMap['flow'],
         );
-
+        //calling telemetryservice to calculate voltage generated from flow rate 
 
         TelemetryService.instance.publish(
           flowRateLpm: flowRate,
@@ -155,7 +158,7 @@ class _DashboardPageState extends State<DashboardPage>{
       }
     }
   }
-
+//build tof dashboard page
   @override
   Widget build(BuildContext context) {
     final fields = [
