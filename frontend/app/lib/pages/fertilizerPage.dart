@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// handwritten code  - this page shows the Details of each field farmer hold, it shows the alerts prevailing, and the location with neceassry niutrients for the crop
+// gpt 4o - get details of required nutrients and get the details of them
+//animation deals with moving turbines and design of the background
 final FlutterTts flutterTts = FlutterTts();
 
 
@@ -32,7 +35,7 @@ class FieldDashboard extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              farm["background"]!, // ✅ now uses the farm passed in
+              farm["background"]!, // now uses the farm passed in
               fit: BoxFit.cover,
             ),
           ),
