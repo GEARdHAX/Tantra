@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+// handwritten code and ai genrated for designing the turbines ( chat gpt ) - GG ( this code  
+//animation deals with moving turbines and design of the background 
 class WindFarmDemo extends StatelessWidget {
   const WindFarmDemo({super.key});
 
