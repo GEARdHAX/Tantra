@@ -5,7 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 import 'energy.dart';
-
+//handwritten code  cor model LatLon, gpt 4o for weather data and get weather through gps service "geolocator"
+ /// Factory constructor for parsing API response
 class LatLon {
   final double latitude;
   final double longitude;
