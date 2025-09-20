@@ -1,5 +1,5 @@
 import 'dart:async';
-
+// Handwritten code - get power generated from the flow rate through sensor
 class TelemetryEvent {
   final double? flowRateLpm;
   final int? tankLevelPercent;
