@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+//handwrittent code  : creating help page for farmers.
 class HelpPage extends StatelessWidget {
   const HelpPage({super.key});
 
