@@ -29,7 +29,7 @@ const Dashboard = () => {
   
   // --- WEBSOCKET CONNECTION & DATA HANDLING ---
   useEffect(() => {
-    const WEBSOCKET_URL = 'ws://10.209.239.219:8080';
+    const WEBSOCKET_URL = window.location.protocol === 'https:' ? 'wss://10.209.239.219:8080' : 'ws://10.209.239.219:8080';
     ws.current = new WebSocket(WEBSOCKET_URL);
     
     ws.current.onopen = () => {
